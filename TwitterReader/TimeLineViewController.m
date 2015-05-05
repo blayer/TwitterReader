@@ -24,6 +24,7 @@
     
     STTwitterAPI *twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:ZCKConsumerKey
                                                             consumerSecret:ZCKConsumerSecret];
+    
     [twitter verifyCredentialsWithSuccessBlock:^(NSString *username) {
         
         [twitter getUserTimelineWithScreenName:@"tim_cook" successBlock:^(NSArray *statuses) {
@@ -48,6 +49,10 @@
        // Do any additional setup after loading the view.
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 // return date in format mm/dd/yyyy
 -(NSString *) getTweetDate:(NSString* ) time
 {
@@ -66,10 +71,7 @@
     return twoDigitTime;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 // using headers is not a good choice for timeline display
 
@@ -104,11 +106,21 @@
     NSData *external = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
     [cell.picture setImage:[UIImage imageWithData:external]];
    */
+    
+    // record id string in the cell,reuse it when cell clicked
+    cell.tweetID=feed[@"id_str"];
     return cell;
 }
 -(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TweetCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+   // TweetDetailViewController *detailPage=[[TweetDetailViewController alloc]init];
+  //  detailPage.tweetID=selectedCell.tweetID;
+    
+   // [self presentModalViewController:detailPage animated:YES];
+    NSString *str=selectedCell.tweetID;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

@@ -15,4 +15,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *picture;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UILabel *handleLabel;
+@property NSString *tweetID;
 @end

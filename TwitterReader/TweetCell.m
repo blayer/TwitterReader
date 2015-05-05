@@ -10,4 +10,5 @@
 
 @implementation TweetCell
 
+//all implemented in storyboard.
 @end
