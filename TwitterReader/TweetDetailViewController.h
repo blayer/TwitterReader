@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *replyTextField;
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property NSString *tweetID;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 
 - (IBAction)nameButtonClicked:(id)sender;
 

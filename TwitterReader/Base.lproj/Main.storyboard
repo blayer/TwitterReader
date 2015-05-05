@@ -141,7 +141,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x38-Sz-8JO" userLabel="icon">
                                 <rect key="frame" x="16" y="84" width="60" height="60"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="context" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Qz-WG-FOz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="context" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Qz-WG-FOz" customClass="STTweetLabel">
                                 <rect key="frame" x="24" y="151" width="409" height="105"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -185,11 +185,19 @@
                                     <action selector="nameButtonClicked:" destination="Wbg-ip-Dre" eventType="touchUpInside" id="Yvf-g1-ggG"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fU6-9B-UTe">
+                                <rect key="frame" x="31" y="402" width="303" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES" calendarEvent="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="contentLabel" destination="8Qz-WG-FOz" id="3cL-w3-UPz"/>
+                        <outlet property="contentTextView" destination="fU6-9B-UTe" id="S7y-lQ-uow"/>
                         <outlet property="dateLabel" destination="Ub5-Ey-a5q" id="i0F-vp-GNK"/>
                         <outlet property="favoriteLabel" destination="XLr-qS-dDr" id="RbG-ks-SN1"/>
                         <outlet property="iconImageView" destination="x38-Sz-8JO" id="jd1-fz-LrR"/>
@@ -197,12 +205,41 @@
                         <outlet property="replyButton" destination="TdK-fm-0hG" id="eGd-BC-M7X"/>
                         <outlet property="replyTextField" destination="Bnz-Ew-Ssh" id="bf1-FI-1Zj"/>
                         <outlet property="retweetLabel" destination="hs0-90-edZ" id="ahk-9w-kwi"/>
+                        <outlet property="tweetLabel" destination="8Qz-WG-FOz" id="6G1-Hb-v3t"/>
                         <segue destination="nEh-Xv-uDA" kind="show" identifier="timelineSegue" id="3WQ-nP-ZfD"/>
+                        <segue destination="xqn-h6-V99" kind="show" identifier="webpageSegue" id="QVB-Mu-vzh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LxQ-N1-qtp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="461"/>
+            <point key="canvasLocation" x="832" y="452"/>
+        </scene>
+        <!--Web Page View Controller-->
+        <scene sceneID="hn0-JX-mST">
+            <objects>
+                <viewController id="xqn-h6-V99" customClass="WebPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sWC-Gr-Cfh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ge9-nw-7af"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EUh-sf-DPR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FTo-cR-jea">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="webPage" destination="FTo-cR-jea" id="Vfk-3O-6OJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eSi-9y-oJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1609" y="461"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

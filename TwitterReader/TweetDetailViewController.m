@@ -10,8 +10,11 @@
 #import "STTwitterAPI.h"
 #import "TwitterReaderParameters.h"
 #import "TimeLineViewController.h"
+#import "STTweetLabel.h"
+#import "WebPageViewController.h"
 
 @interface TweetDetailViewController ()
+@property (nonatomic, weak) IBOutlet STTweetLabel *tweetLabel;
 @property NSDictionary *tweetInfo;
 @property NSString *targetScreenName;
 @property NSDictionary *user;
@@ -45,7 +48,7 @@
     [twitter verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID) {
         
         
-        [twitter getStatusesShowID:self.tweetID trimUser:nil includeMyRetweet:nil includeEntities:nil successBlock:^(NSDictionary *status) {
+        [twitter getStatusesShowID:self.tweetID trimUser:nil includeMyRetweet:nil includeEntities:[NSNumber numberWithBool:YES] successBlock:^(NSDictionary *status) {
             self.tweetInfo=status;
             self.user=self.tweetInfo[@"user"];
             [self showTweetDetail];
@@ -79,9 +82,28 @@
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
     [self.iconImageView setImage:[UIImage imageWithData:data]];
     
-    self.contentLabel.text=self.tweetInfo[@"text"];
+    self.tweetLabel.text=self.tweetInfo[@"text"];
+    self.tweetLabel.detectionBlock = ^(STTweetHotWord hotWord, NSString *string, NSString *protocol, NSRange range) {
+        
+        NSArray *hotWords = @[@"Handle", @"Hashtag", @"Link"];
+        
+        NSString *typeTag = [NSString stringWithFormat:@"%@", hotWords[hotWord]];
+        
+        if([typeTag isEqualToString:@"Link"])
+        {}
+        if([typeTag isEqualToString:@"Handle"])
+        { self.targetScreenName=[string substringFromIndex:1];
+         [self performSegueWithIdentifier: @"timelineSegue" sender: self];
+        }
+        
+    };
+    
+    self.contentTextView.text=self.tweetInfo[@"text"];
+  //  [self.contentTextView setDataDetectorTypes:UIDataDetectorTypeAll];
     
     [self.nameButton setTitle:self.user[@"screen_name"] forState:UIControlStateNormal];
+    
+    
 }
 
 
@@ -94,10 +116,20 @@
 {
     if ([segue.identifier isEqualToString:@"timelineSegue"]) {
         TimeLineViewController *destViewController=segue.destinationViewController;
-      //  destViewController.scrrenName=self.targetScreenName;
+        destViewController.scrrenName=self.targetScreenName;
         
-          destViewController.scrrenName=@"NBAcom";
+    }
+    
+    if([segue.identifier isEqualToString:@"webpageSegue"]){
+        
+    }
+}
 
-    }}
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+{
+    
+    return NO;
+}
+
 
 @end
