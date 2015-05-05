@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TwitterReader-STTwitter.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TwitterReader.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>48EB879DBBB42CF15A842FB7</key>
+		<key>01C7AD0CFA8371BE37D58680</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF9518F4239F2D39A21680FC</key>
+		<key>46E5E4FDB749474292216AC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>829053F810756CC0E22A0201</key>
 		<dict>
 			<key>primary</key>
 			<true/>

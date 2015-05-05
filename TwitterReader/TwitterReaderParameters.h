@@ -6,8 +6,13 @@
 //  Copyright (c) 2015 Changkun Zhao. All rights reserved.
 //
 
-#ifndef TwitterReader_TwitterReaderParameters_h
-#define TwitterReader_TwitterReaderParameters_h
+#import <Foundation/Foundation.h>
+#define ZCKConsumerKey                 @"6L3jbzOHUkbllPYXExjAY8tQ1"
+#define ZCKConsumerSecret              @"ms1ANHeUoiWRX024h3GgvCcuRRnsEkJdmrd3m0pJAD47V9QYU4"
 
 
-#endif
+
+
+@interface NSObject ()
+
+@end

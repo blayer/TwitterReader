@@ -5,6 +5,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'TwitterReader' do
 pod 'AFNetworking'
+pod 'STTwitter'
+
 end
 
 target 'TwitterReaderTests' do
