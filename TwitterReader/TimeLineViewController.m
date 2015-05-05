@@ -109,24 +109,15 @@
     cell.date.text=time;
     [cell.icon setImage:[UIImage imageWithData:data]];
     
-  /*  NSDictionary* urls=feed[@"urls"];
-    NSString *imgURL=urls[@"url"];
-    NSData *external = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
-    [cell.picture setImage:[UIImage imageWithData:external]];
-   */
-    
     // record id string in the cell,reuse it when cell clicked
     cell.tweetID=feed[@"id_str"];
     return cell;
 }
--(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   // [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TweetCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     self.selectedID=selectedCell.tweetID;
-    
     [self performSegueWithIdentifier: @"detailSegue" sender: self];
-   // [self.navigationController pushViewController:detailPage animated:YES];
 }
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -135,17 +126,7 @@
         destViewController.tweetID=self.selectedID;
     }}
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
-    [label setFont:[UIFont boldSystemFontOfSize:12]];
-    NSString *string =@"test";
-    /* Section header is in 0th index... */
-    [label setText:string];
-    [view addSubview:label];
-    return view;
-}
+
 
 
 /*

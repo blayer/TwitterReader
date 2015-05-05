@@ -11,14 +11,12 @@
 @interface TweetDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UIButton *nameButton;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteLabel;
 @property (weak, nonatomic) IBOutlet UITextField *replyTextField;
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property NSString *tweetID;
-@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 
 - (IBAction)nameButtonClicked:(id)sender;
 

@@ -102,7 +102,6 @@
         
     };
     
-    self.contentTextView.text=self.tweetInfo[@"text"];
   //  [self.contentTextView setDataDetectorTypes:UIDataDetectorTypeAll];
     
     [self.nameButton setTitle:self.user[@"screen_name"] forState:UIControlStateNormal];
