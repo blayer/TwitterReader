@@ -26,7 +26,7 @@
                                                             consumerSecret:ZCKConsumerSecret];
     [twitter verifyCredentialsWithSuccessBlock:^(NSString *username) {
         
-        [twitter getUserTimelineWithScreenName:@"NBA" successBlock:^(NSArray *statuses) {
+        [twitter getUserTimelineWithScreenName:@"tim_cook" successBlock:^(NSArray *statuses) {
             
             self.twitterFeed=[NSMutableArray arrayWithArray:statuses];
             [self.timeLineTableView reloadData];
@@ -94,6 +94,8 @@
     NSString *imageURL=user[@"profile_image_url"];
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
     NSString *time=[self getTweetTime:feed[@"created_at"]];
+    NSString *handleName=[NSString stringWithFormat:@"@%@",user[@"screen_name"]];
+    cell.handleLabel.text=handleName;
     cell.date.text=time;
     [cell.icon setImage:[UIImage imageWithData:data]];
     

@@ -65,6 +65,12 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2NJ-4v-qm9">
                                                     <rect key="frame" x="270" y="104" width="60" height="60"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="handle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbm-56-f8t">
+                                                    <rect key="frame" x="163" y="8" width="66" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6l-Gc-KZw">
                                                     <rect key="frame" x="413" y="8" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -77,17 +83,20 @@
                                                 <constraint firstItem="k6l-Gc-KZw" firstAttribute="leading" secondItem="EJE-bF-f09" secondAttribute="trailing" constant="150" id="L7f-yF-dk5"/>
                                                 <constraint firstItem="HT0-Wu-0hM" firstAttribute="leading" secondItem="74P-o8-m7E" secondAttribute="leadingMargin" constant="10" id="TcV-tX-HM5"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2NJ-4v-qm9" secondAttribute="trailing" constant="30" id="Uf4-Vb-8ff"/>
+                                                <constraint firstItem="Rbm-56-f8t" firstAttribute="leading" secondItem="EJE-bF-f09" secondAttribute="trailing" constant="10" id="W2J-Qy-ThZ"/>
                                                 <constraint firstItem="HT0-Wu-0hM" firstAttribute="top" secondItem="74P-o8-m7E" secondAttribute="topMargin" id="Wj0-Wu-EmY"/>
                                                 <constraint firstItem="cLn-vS-8q7" firstAttribute="top" secondItem="EJE-bF-f09" secondAttribute="bottom" constant="10" id="aH1-za-dyh"/>
                                                 <constraint firstItem="EJE-bF-f09" firstAttribute="top" secondItem="74P-o8-m7E" secondAttribute="topMargin" id="atg-XN-KmL"/>
                                                 <constraint firstItem="2NJ-4v-qm9" firstAttribute="top" secondItem="cLn-vS-8q7" secondAttribute="bottom" constant="27" id="dd7-Pd-7rI"/>
+                                                <constraint firstItem="Rbm-56-f8t" firstAttribute="top" secondItem="74P-o8-m7E" secondAttribute="topMargin" id="hCa-L7-LNg"/>
                                                 <constraint firstItem="2NJ-4v-qm9" firstAttribute="leading" secondItem="74P-o8-m7E" secondAttribute="leadingMargin" constant="262" id="hIP-ga-X7H"/>
                                                 <constraint firstItem="k6l-Gc-KZw" firstAttribute="top" secondItem="74P-o8-m7E" secondAttribute="topMargin" id="vOq-EH-xEt"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cLn-vS-8q7" secondAttribute="trailing" constant="20" id="w17-0v-7Ys"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="date" destination="k6l-Gc-KZw" id="R5v-HF-8ws"/>
+                                            <outlet property="date" destination="k6l-Gc-KZw" id="R1G-D4-4Th"/>
+                                            <outlet property="handleLabel" destination="Rbm-56-f8t" id="LAJ-ci-oJp"/>
                                             <outlet property="icon" destination="HT0-Wu-0hM" id="CO0-fT-EF6"/>
                                             <outlet property="picture" destination="2NJ-4v-qm9" id="Dsh-f8-tu3"/>
                                             <outlet property="subtitleLabel" destination="cLn-vS-8q7" id="tvv-vh-TxE"/>
