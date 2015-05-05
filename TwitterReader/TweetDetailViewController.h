@@ -19,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property NSString *tweetID;
 
+- (IBAction)nameButtonClicked:(id)sender;
+
 
 @end

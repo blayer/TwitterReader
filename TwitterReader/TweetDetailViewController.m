@@ -9,9 +9,12 @@
 #import "TweetDetailViewController.h"
 #import "STTwitterAPI.h"
 #import "TwitterReaderParameters.h"
+#import "TimeLineViewController.h"
 
 @interface TweetDetailViewController ()
 @property NSDictionary *tweetInfo;
+@property NSString *targetScreenName;
+@property NSDictionary *user;
 @end
 
 @implementation TweetDetailViewController
@@ -44,6 +47,7 @@
         
         [twitter getStatusesShowID:self.tweetID trimUser:nil includeMyRetweet:nil includeEntities:nil successBlock:^(NSDictionary *status) {
             self.tweetInfo=status;
+            self.user=self.tweetInfo[@"user"];
             [self showTweetDetail];
             
             
@@ -65,10 +69,35 @@
 }
 -(void) showTweetDetail
 {
-     NSString *result = [NSString stringWithFormat:@"%@ %@", self.tweetInfo[@"retweet_count"],@"retweet"];
-    self.retweetLabel.text=result;
+     NSString *retweet = [NSString stringWithFormat:@"%@ %@", self.tweetInfo[@"retweet_count"],@"retweets"];
+    self.retweetLabel.text=retweet;
     
+    NSString *favorite =[NSString stringWithFormat:@"%@ %@", self.user[@"favourites_count"],@"favorites"];
+    self.favoriteLabel.text=favorite;
+    
+    NSString *imageURL=self.user[@"profile_image_url"];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+    [self.iconImageView setImage:[UIImage imageWithData:data]];
+    
+    self.contentLabel.text=self.tweetInfo[@"text"];
+    
+    [self.nameButton setTitle:self.user[@"screen_name"] forState:UIControlStateNormal];
 }
 
+
+- (IBAction)nameButtonClicked:(id)sender {
+    self.targetScreenName=self.user[@"screen_name"];
+    [self performSegueWithIdentifier: @"timelineSegue" sender: self];
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"timelineSegue"]) {
+        TimeLineViewController *destViewController=segue.destinationViewController;
+      //  destViewController.scrrenName=self.targetScreenName;
+        
+          destViewController.scrrenName=@"NBAcom";
+
+    }}
 
 @end

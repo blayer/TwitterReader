@@ -10,5 +10,6 @@
 
 @interface TimeLineViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *timeLineTableView;
+@property NSString *scrrenName;
 
 @end

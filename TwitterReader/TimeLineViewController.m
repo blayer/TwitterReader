@@ -23,13 +23,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if(self.scrrenName==nil)
+    { self.scrrenName=@"tim_cook";}
     
+       // Do any additional setup after loading the view.
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
     STTwitterAPI *twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:ZCKConsumerKey
                                                             consumerSecret:ZCKConsumerSecret];
     
     [twitter verifyCredentialsWithSuccessBlock:^(NSString *username) {
         
-        [twitter getUserTimelineWithScreenName:@"tim_cook" successBlock:^(NSArray *statuses) {
+        [twitter getUserTimelineWithScreenName:self.scrrenName successBlock:^(NSArray *statuses) {
             
             self.twitterFeed=[NSMutableArray arrayWithArray:statuses];
             [self.timeLineTableView reloadData];
@@ -43,14 +50,13 @@
     } errorBlock:^(NSError *error) {
         
         NSLog(@"%@",error.debugDescription);
-
+        
         
     }];
     
-   
-       // Do any additional setup after loading the view.
-}
 
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -127,8 +133,6 @@
     if ([segue.identifier isEqualToString:@"detailSegue"]) {
         TweetDetailViewController *destViewController=segue.destinationViewController;
         destViewController.tweetID=self.selectedID;
-        
-       
     }}
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
