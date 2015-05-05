@@ -10,10 +10,12 @@
 #import "STTwitterAPI.h"
 #import "TweetCell.h"
 #import "TwitterReaderParameters.h"
+#import "TweetDetailViewController.h"
 
 @interface TimeLineViewController ()
 @property (strong,nonatomic) NSMutableArray *twitterFeed;
 @property (strong,nonatomic) NSDictionary  *feedDict;
+@property (weak,nonatomic) NSString *selectedID;
 
 @end
 
@@ -113,15 +115,21 @@
 }
 -(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+   // [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TweetCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-   // TweetDetailViewController *detailPage=[[TweetDetailViewController alloc]init];
-  //  detailPage.tweetID=selectedCell.tweetID;
+    self.selectedID=selectedCell.tweetID;
     
-   // [self presentModalViewController:detailPage animated:YES];
-    NSString *str=selectedCell.tweetID;
+    [self performSegueWithIdentifier: @"detailSegue" sender: self];
+   // [self.navigationController pushViewController:detailPage animated:YES];
 }
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        TweetDetailViewController *destViewController=segue.destinationViewController;
+        destViewController.tweetID=self.selectedID;
+        
+       
+    }}
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

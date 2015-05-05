@@ -119,6 +119,7 @@
                     <navigationItem key="navigationItem" id="Ums-bH-JvO"/>
                     <connections>
                         <outlet property="timeLineTableView" destination="jXR-Qh-raz" id="1fY-jZ-zSY"/>
+                        <segue destination="Wbg-ip-Dre" kind="show" identifier="detailSegue" id="7Am-if-cPR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nol-cR-C2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -197,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LxQ-N1-qtp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="765" y="432"/>
+            <point key="canvasLocation" x="788" y="461"/>
         </scene>
     </scenes>
 </document>
