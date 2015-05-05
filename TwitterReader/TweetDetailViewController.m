@@ -17,6 +17,7 @@
 @property (nonatomic, weak) IBOutlet STTweetLabel *tweetLabel;
 @property NSDictionary *tweetInfo;
 @property NSString *targetScreenName;
+@property NSString *targetURL;
 @property NSDictionary *user;
 @end
 
@@ -90,7 +91,10 @@
         NSString *typeTag = [NSString stringWithFormat:@"%@", hotWords[hotWord]];
         
         if([typeTag isEqualToString:@"Link"])
-        {}
+        {     self.targetURL=string;
+             [self performSegueWithIdentifier: @"webpageSegue" sender: self];
+            
+        }
         if([typeTag isEqualToString:@"Handle"])
         { self.targetScreenName=[string substringFromIndex:1];
          [self performSegueWithIdentifier: @"timelineSegue" sender: self];
@@ -121,7 +125,8 @@
     }
     
     if([segue.identifier isEqualToString:@"webpageSegue"]){
-        
+        WebPageViewController *destViewController=segue.destinationViewController;
+        destViewController.pageURL=self.targetURL;
     }
 }
 

@@ -16,7 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view.
+}
+-(void) viewWillAppear:(BOOL)animated
+{
+   NSURL *url = [NSURL URLWithString:self.pageURL];
+   NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+  [self.webPage loadRequest:requestObj];
 }
 
 - (void)didReceiveMemoryWarning {

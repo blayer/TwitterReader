@@ -10,5 +10,6 @@
 
 @interface WebPageViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIWebView *webPage;
+@property NSString *pageURL;
 
 @end

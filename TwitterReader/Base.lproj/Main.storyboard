@@ -226,12 +226,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FTo-cR-jea">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTo-cR-jea">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="FTo-cR-jea" secondAttribute="trailing" constant="-16" id="JJH-jo-FUP"/>
+                            <constraint firstItem="Ge9-nw-7af" firstAttribute="top" secondItem="FTo-cR-jea" secondAttribute="bottom" id="KQT-yf-Rt3"/>
+                            <constraint firstItem="FTo-cR-jea" firstAttribute="top" secondItem="EUh-sf-DPR" secondAttribute="topMargin" id="LWA-xo-Cep"/>
+                            <constraint firstItem="FTo-cR-jea" firstAttribute="leading" secondItem="EUh-sf-DPR" secondAttribute="leadingMargin" constant="-16" id="hhv-vL-eaH"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="webPage" destination="FTo-cR-jea" id="Vfk-3O-6OJ"/>
