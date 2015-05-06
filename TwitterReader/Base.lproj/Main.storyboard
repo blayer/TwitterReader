@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="-540" y="466"/>
         </scene>
-        <!--Time Line View Controller-->
+        <!--TwitterReader-->
         <scene sceneID="y7h-dX-2OK">
             <objects>
                 <viewController id="nEh-Xv-uDA" customClass="TimeLineViewController" sceneMemberID="viewController">
@@ -34,7 +34,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jXR-Qh-raz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jXR-Qh-raz">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -83,30 +83,21 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cLn-vS-8q7" firstAttribute="leading" secondItem="HT0-Wu-0hM" secondAttribute="trailing" constant="5" id="A6V-nU-LlH"/>
                                                 <constraint firstItem="k6l-Gc-KZw" firstAttribute="top" secondItem="74P-o8-m7E" secondAttribute="topMargin" id="BBj-eR-6Wg"/>
                                                 <constraint firstItem="EJE-bF-f09" firstAttribute="leading" secondItem="HT0-Wu-0hM" secondAttribute="trailing" constant="5" id="CHC-Ca-k7F"/>
-                                                <constraint firstItem="k6l-Gc-KZw" firstAttribute="leading" secondItem="EJE-bF-f09" secondAttribute="trailing" constant="150" id="L7f-yF-dk5"/>
                                                 <constraint firstItem="HT0-Wu-0hM" firstAttribute="leading" secondItem="74P-o8-m7E" secondAttribute="leadingMargin" id="TcV-tX-HM5"/>
+                                                <constraint firstItem="cLn-vS-8q7" firstAttribute="top" secondItem="EJE-bF-f09" secondAttribute="bottom" constant="20" id="UFL-yF-yYV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2NJ-4v-qm9" secondAttribute="trailing" constant="30" id="Uf4-Vb-8ff"/>
                                                 <constraint firstItem="Rbm-56-f8t" firstAttribute="leading" secondItem="EJE-bF-f09" secondAttribute="trailing" constant="10" id="W2J-Qy-ThZ"/>
                                                 <constraint firstItem="HT0-Wu-0hM" firstAttribute="top" secondItem="74P-o8-m7E" secondAttribute="topMargin" id="Wj0-Wu-EmY"/>
-                                                <constraint firstItem="cLn-vS-8q7" firstAttribute="top" secondItem="EJE-bF-f09" secondAttribute="bottom" constant="10" id="aH1-za-dyh"/>
                                                 <constraint firstItem="EJE-bF-f09" firstAttribute="top" secondItem="74P-o8-m7E" secondAttribute="topMargin" id="atg-XN-KmL"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="k6l-Gc-KZw" secondAttribute="trailing" constant="5" id="boG-pX-cbp"/>
+                                                <constraint firstItem="cLn-vS-8q7" firstAttribute="leading" secondItem="HT0-Wu-0hM" secondAttribute="trailing" constant="5" id="dKG-Q5-odE"/>
                                                 <constraint firstItem="Rbm-56-f8t" firstAttribute="top" secondItem="74P-o8-m7E" secondAttribute="topMargin" id="hCa-L7-LNg"/>
                                                 <constraint firstItem="2NJ-4v-qm9" firstAttribute="leading" secondItem="74P-o8-m7E" secondAttribute="leadingMargin" constant="30" id="hIP-ga-X7H"/>
-                                                <constraint firstItem="2NJ-4v-qm9" firstAttribute="top" secondItem="cLn-vS-8q7" secondAttribute="bottom" constant="5" id="oR3-00-3i8"/>
-                                                <constraint firstItem="k6l-Gc-KZw" firstAttribute="top" secondItem="74P-o8-m7E" secondAttribute="topMargin" id="vOq-EH-xEt"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cLn-vS-8q7" secondAttribute="trailing" constant="20" id="w17-0v-7Ys"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="2NJ-4v-qm9" secondAttribute="bottom" constant="10" id="xdu-Vb-JDZ"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="L7f-yF-dk5"/>
-                                                    <exclude reference="vOq-EH-xEt"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="date" destination="k6l-Gc-KZw" id="R1G-D4-4Th"/>
@@ -126,11 +117,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="jXR-Qh-raz" firstAttribute="top" secondItem="Wpx-rx-RhL" secondAttribute="topMargin" id="45E-RA-xh8"/>
                             <constraint firstItem="jXR-Qh-raz" firstAttribute="leading" secondItem="Wpx-rx-RhL" secondAttribute="leadingMargin" constant="-16" id="4op-pg-0Vp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jXR-Qh-raz" secondAttribute="trailing" constant="-16" id="5Xj-XE-fll"/>
+                            <constraint firstItem="ypq-j8-nTR" firstAttribute="top" secondItem="jXR-Qh-raz" secondAttribute="bottom" id="gj5-Vz-F0b"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ums-bH-JvO"/>
+                    <navigationItem key="navigationItem" title="TwitterReader" id="Ums-bH-JvO"/>
                     <connections>
                         <outlet property="timeLineTableView" destination="jXR-Qh-raz" id="1fY-jZ-zSY"/>
                         <segue destination="Wbg-ip-Dre" kind="show" identifier="detailSegue" id="7Am-if-cPR"/>
@@ -165,14 +158,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="fast reply here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bnz-Ew-Ssh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="fast reply here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bnz-Ew-Ssh">
                                 <rect key="frame" x="16" y="239" width="286" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="twitter"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdK-fm-0hG" userLabel="reply">
-                                <rect key="frame" x="317" y="238" width="34" height="30"/>
-                                <state key="normal">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdK-fm-0hG" userLabel="reply">
+                                <rect key="frame" x="317" y="238" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="Fnb-vV-aid"/>
+                                    <constraint firstAttribute="height" constant="25" id="Nle-AK-7ht"/>
+                                </constraints>
+                                <state key="normal" image="Left2-50.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -244,7 +241,7 @@
                             <constraint firstItem="Bnz-Ew-Ssh" firstAttribute="leading" secondItem="qo1-Fx-aUg" secondAttribute="leadingMargin" id="RzM-wS-ZGH"/>
                             <constraint firstItem="Thr-bm-owJ" firstAttribute="leading" secondItem="x38-Sz-8JO" secondAttribute="trailing" constant="20" id="TJd-eJ-AL5"/>
                             <constraint firstItem="bKl-gc-TAO" firstAttribute="top" secondItem="17Z-pu-b2w" secondAttribute="bottom" constant="10" id="Uc1-kB-et2"/>
-                            <constraint firstItem="TdK-fm-0hG" firstAttribute="top" secondItem="3F1-eI-QUr" secondAttribute="bottom" constant="20" id="VhP-ul-7Hc"/>
+                            <constraint firstItem="TdK-fm-0hG" firstAttribute="top" secondItem="3F1-eI-QUr" secondAttribute="bottom" constant="30" id="VhP-ul-7Hc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ub5-Ey-a5q" secondAttribute="trailing" constant="5" id="Xwl-P2-BmH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3F1-eI-QUr" secondAttribute="trailing" constant="5" id="YIf-Li-U6h"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8Qz-WG-FOz" secondAttribute="trailing" constant="10" id="kfa-jN-IZO"/>
@@ -307,7 +304,10 @@
             <point key="canvasLocation" x="1609" y="461"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Left2-50.png" width="50" height="50"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3WQ-nP-ZfD"/>
+        <segue reference="SJy-zC-yVR"/>
     </inferredMetricsTieBreakers>
 </document>

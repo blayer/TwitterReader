@@ -17,7 +17,7 @@
 
 @interface TimeLineViewController ()
 @property (strong,nonatomic) NSMutableArray *twitterFeed;
-@property (strong,nonatomic) NSDictionary  *feedDict;
+@property (weak,nonatomic) NSDictionary  *feedDict;
 @property (weak,nonatomic) NSString *selectedID;
 @property (weak,nonatomic) NSString *lastID;
 @property NSInteger count;
@@ -32,7 +32,7 @@
     { self.scrrenName=@"NBAcom";}
     
     __weak TimeLineViewController *weakSelf = self;
-    
+    //setting pull to refresh action listener
     [self.timeLineTableView addInfiniteScrollingWithActionHandler:^{
             [weakSelf loadMoreTweets];
     }];
@@ -46,8 +46,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [self.timeLineTableView triggerPullToRefresh];
 }
-
-
+// function to load first K tweets
 -(void) firstLoadTweets
 {
     STTwitterAPI *twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:ZCKConsumerKey
@@ -76,6 +75,7 @@
         
     }];
 }
+// function to load next k tweets, but the response is not guranteed to be k
 -(void) loadMoreTweets
 {
     
@@ -89,6 +89,7 @@
         [twitter getUserTimelineWithScreenName:self.scrrenName sinceID:nil maxID:self.lastID count:NumberOfTweetsPerPull successBlock:^(NSArray *statuses) {
          // adding elements of statuses with first element removed,
          // becuase the first is a duplicate.
+            
             self.count=[statuses count]-1;
             for (int i = 1; i <= self.count; i++)
             {
@@ -113,7 +114,7 @@
     }];
 
 }
-
+//inserting rows
 - (void)insertRowAtBottom {
     
     __weak TimeLineViewController *weakSelf = self;
@@ -175,18 +176,22 @@
     NSInteger index=indexPath.row;
     NSDictionary* feed=self.twitterFeed[index];
     NSDictionary* user=feed[@"user"];
+    //show tweet content
     cell.subtitleLabel.text=feed[@"text"];
+    //show user name
     cell.titleLabel.text=user[@"name"];
+    
+    //show profile image
     NSString *imageURL=user[@"profile_image_url"];
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
     NSString *fullDate=feed[@"created_at"];
     cell.date.text=[NSString stringWithFormat:@"%@  %@",[self getTweetDate:fullDate],[self getTweetTime:fullDate] ];
-    
     [cell.icon setImage:[UIImage imageWithData:data]];
-    
+    //show screen name
     NSString *handleName=[NSString stringWithFormat:@"@%@",user[@"screen_name"]];
     cell.handleLabel.text=handleName;
     
+    //show tweet images
     NSDictionary *entities=feed[@"entities"];
     NSArray *mediaList=entities[@"media"];
     NSDictionary *media=[mediaList objectAtIndex:0];
@@ -214,11 +219,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     TweetCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     self.selectedID=selectedCell.tweetID;
     [self performSegueWithIdentifier: @"detailSegue" sender: self];
 }
 
+
+// dynamically change the height of cell, if tweet has no image, return 100
+// is it has an image, return 100+screan width/2
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary* feed=self.twitterFeed[indexPath.row];
@@ -226,10 +235,13 @@
     NSArray *mediaList=entities[@"media"];
     NSDictionary *media=[mediaList objectAtIndex:0];
     NSString *contentImageURL= media[@"media_url"];
+    
     if(contentImageURL==nil)
     {   return 100.0f;}
     
-    else return 270.0f;
+    else {
+        return  100.0f+self.view.frame.size.width*0.5f;
+    };
     
 }
 

@@ -49,7 +49,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+// load and build view.
+// also contains alert if error happens
 -(void) buildView
 {
     // Do any additional setup after loading the view.
@@ -125,17 +126,19 @@
     NSDictionary *media=[mediaList objectAtIndex:0];
     NSString *contentImageURL= media[@"media_url"];
     NSString *size=@"large";
+    
+    if(contentImageURL==nil)
+    {
+        self.contentImageView.frame = CGRectMake(self.contentImageView.frame.origin.x, self.contentImageView.frame.origin.y, 0.0, 0.0);
+        [self.view setNeedsDisplay];
 
-    NSData *contentData = [NSData dataWithContentsOfURL:[NSURL URLWithString:
+    }
+
+    else{ NSData *contentData = [NSData dataWithContentsOfURL:[NSURL URLWithString:
                                                          [NSString stringWithFormat:@"%@:%@",contentImageURL,size ]]];
     
     [self.contentImageView setImage:[UIImage imageWithData:contentData]];
-    
-    if(contentData==nil)
-    {
-        [self.contentImageView removeFromSuperview];
-       
-         }
+    }
  
     //should tweet content
     self.tweetLabel.text=self.tweetInfo[@"text"];
@@ -183,6 +186,9 @@
     [self performSegueWithIdentifier: @"timelineSegue" sender: self];
 }
 
+
+// reply button clicked, show wait message, wait 1.5s,
+// empty textfield
 - (IBAction)replyButtonClicked:(id)sender {
     
     ActivityHub *hub=[[ActivityHub alloc ]initWithFrame:CGRectMake(0, 0,170, 170)];
@@ -198,8 +204,10 @@
         [hub removeFromSuperview];
     });
     
+    self.replyTextField.text=nil;
+    
 }
-
+// handle segues, oen directs to new timeline, one direct to webpage
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"timelineSegue"]) {
