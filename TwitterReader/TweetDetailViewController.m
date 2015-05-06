@@ -133,11 +133,21 @@
     self.dateLabel.text=[NSString stringWithFormat:@"%@  %@", [self getTweetDate:date],[self getTweetTime:date]];
     
     //show screen name
-    [self.nameButton setTitle:self.user[@"screen_name"] forState:UIControlStateNormal];
+    NSString *screenName=[NSString stringWithFormat:@"@%@",self.user[@"screen_name"]];
+    [self.nameButton setTitle:screenName forState:UIControlStateNormal];
     
+    //show user name
+    NSString *username=self.user[@"name"];
+    [self.userNameButton setTitle:username forState:UIControlStateNormal];
     
 }
 
+
+- (IBAction)userNameButtonClicked:(id)sender {
+    self.targetScreenName=self.user[@"screen_name"];
+    [self performSegueWithIdentifier: @"timelineSegue" sender: self];
+    
+}
 
 - (IBAction)nameButtonClicked:(id)sender {
     self.targetScreenName=self.user[@"screen_name"];
