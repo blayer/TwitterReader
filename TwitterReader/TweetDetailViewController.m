@@ -27,10 +27,11 @@
     [super viewDidLoad];
     self.replyTextField.delegate = self;
     
-  //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-   //                                initWithTarget:self
-   //                                action:@selector(dismissKeyboard)];
-   // [self.view addGestureRecognizer:tap];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    [tap setCancelsTouchesInView:NO];
+    [self.view addGestureRecognizer:tap];
     
 }
 
@@ -78,7 +79,7 @@
 }
 -(void) showTweetDetail
 {
-     NSString *retweet = [NSString stringWithFormat:@"%@ %@", self.tweetInfo[@"retweet_count"],@"retweets"];
+    NSString *retweet = [NSString stringWithFormat:@"%@ %@", self.tweetInfo[@"retweet_count"],@"retweets"];
     self.retweetLabel.text=retweet;
     
     NSString *favorite =[NSString stringWithFormat:@"%@ %@", self.user[@"favourites_count"],@"favorites"];
@@ -152,7 +153,14 @@
     }
 }
 
-
+//for dismiss keyboards
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    return YES;
+    
+}
+-(void)dismissKeyboard {
+    [self.view endEditing:YES];
+}
 
 
 

@@ -11,11 +11,15 @@
 #import "TweetCell.h"
 #import "TwitterReaderParameters.h"
 #import "TweetDetailViewController.h"
+#import "SVPullToRefresh.h"
+
 
 @interface TimeLineViewController ()
 @property (strong,nonatomic) NSMutableArray *twitterFeed;
 @property (strong,nonatomic) NSDictionary  *feedDict;
 @property (weak,nonatomic) NSString *selectedID;
+@property (weak,nonatomic) NSString *lastID;
+@property NSInteger count;
 
 @end
 
@@ -26,24 +30,34 @@
     if(self.scrrenName==nil)
     { self.scrrenName=@"NBAcom";}
     
+    __weak TimeLineViewController *weakSelf = self;
+    
+    [self.timeLineTableView addInfiniteScrollingWithActionHandler:^{
+            [weakSelf loadMoreTweets];
+    }];
        // Do any additional setup after loading the view.
 }
 
 -(void) viewWillAppear:(BOOL)animated
+{ [self firstLoadTweets];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.timeLineTableView triggerPullToRefresh];
+}
+
+
+-(void) firstLoadTweets
 {
     STTwitterAPI *twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:ZCKConsumerKey
                                                             consumerSecret:ZCKConsumerSecret];
     
-    [twitter verifyCredentialsWithSuccessBlock:^(NSString *username) {
+    [twitter verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID){
         
-        [twitter getUserTimelineWithScreenName:self.scrrenName successBlock:^(NSArray *statuses) {
-            
+        [twitter getUserTimelineWithScreenName:self.scrrenName count:NumberOfTweetsPerPull successBlock:^(NSArray *statuses) {
             self.twitterFeed=[NSMutableArray arrayWithArray:statuses];
             [self.timeLineTableView reloadData];
-            
-            
         } errorBlock:^(NSError *error) {
-            
             NSLog(@"%@",error.debugDescription);
         }];
         
@@ -53,14 +67,55 @@
         
         
     }];
+}
+-(void) loadMoreTweets
+{
     
+    STTwitterAPI *twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:ZCKConsumerKey
+                                                            consumerSecret:ZCKConsumerSecret];
+    
+    NSDictionary *lastFeed=[self.twitterFeed objectAtIndex:[self.twitterFeed count]-1];
+    self.lastID=lastFeed[@"id_str"];
+    [twitter verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID){
+        
+        [twitter getUserTimelineWithScreenName:self.scrrenName sinceID:nil maxID:self.lastID count:NumberOfTweetsPerPull successBlock:^(NSArray *statuses) {
+            
+            [self.twitterFeed addObjectsFromArray:statuses];            
+            [self insertRowAtBottom];
+        } errorBlock:^(NSError *error) {
+            
+            NSLog(@"%@",error.debugDescription);
+        }];
+    } errorBlock:^(NSError *error) {
+        
+        NSLog(@"%@",error.debugDescription);
+        
+        
+    }];
 
+}
+
+- (void)insertRowAtBottom {
     
+    __weak TimeLineViewController *weakSelf = self;
+    
+    int64_t delayInSeconds =1.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        NSMutableArray *indexPaths = [NSMutableArray array];
+        
+        for (int i = 0; i < self.count; i++) {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:self.twitterFeed.count+i-self.count inSection:0]];
+        }
+        [weakSelf.timeLineTableView beginUpdates];
+        [weakSelf.timeLineTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+        [weakSelf.timeLineTableView endUpdates];
+        [weakSelf.timeLineTableView.infiniteScrollingView stopAnimating];
+    });
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
 // return date in format mm/dd/yyyy
 -(NSString *) getTweetDate:(NSString* ) time
 {
@@ -87,7 +142,9 @@
 { return self.twitterFeed.count;
 }
 
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -127,6 +184,8 @@
     
     // record id string in the cell,reuse it when cell clicked
     cell.tweetID=feed[@"id_str"];
+    
+   
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

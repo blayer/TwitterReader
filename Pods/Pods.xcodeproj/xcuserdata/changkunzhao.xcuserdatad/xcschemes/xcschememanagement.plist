@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-TwitterReader-AFNetworking.xcscheme</key>
+		<key>Pods-TwitterReader-SVPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>21D9F316F32E4A69787787F4</key>
+		<key>56FDA039194534723322E4AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4F6D45594C9BBB61AA6AFDD9</key>
+		<key>849D2C66600956E0F7C3A11D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
