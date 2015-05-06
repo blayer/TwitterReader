@@ -83,6 +83,24 @@
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
     [self.iconImageView setImage:[UIImage imageWithData:data]];
     
+    NSDictionary *entities=self.tweetInfo[@"entities"];
+    NSArray *mediaList=entities[@"media"];
+    NSDictionary *media=[mediaList objectAtIndex:0];
+    NSString *contentImageURL= media[@"media_url"];
+    NSString *size=@"large";
+
+    NSData *contentData = [NSData dataWithContentsOfURL:[NSURL URLWithString:
+                                                         [NSString stringWithFormat:@"%@:%@",contentImageURL,size ]]];
+    
+    [self.contentImageView setImage:[UIImage imageWithData:contentData]];
+    
+    if(contentData==nil)
+    {
+        [self.contentImageView removeFromSuperview];
+       
+         }
+ 
+    
     self.tweetLabel.text=self.tweetInfo[@"text"];
     self.tweetLabel.detectionBlock = ^(STTweetHotWord hotWord, NSString *string, NSString *protocol, NSRange range) {
         

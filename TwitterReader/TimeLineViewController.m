@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if(self.scrrenName==nil)
-    { self.scrrenName=@"tim_cook";}
+    { self.scrrenName=@"NBAcom";}
     
        // Do any additional setup after loading the view.
 }
