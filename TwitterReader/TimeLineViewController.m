@@ -79,8 +79,13 @@
     [twitter verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID){
         
         [twitter getUserTimelineWithScreenName:self.scrrenName sinceID:nil maxID:self.lastID count:NumberOfTweetsPerPull successBlock:^(NSArray *statuses) {
-            
-            [self.twitterFeed addObjectsFromArray:statuses];            
+         // adding elements of statuses with first element removed,
+         // becuase the first is a duplicate.
+            self.count=[statuses count]-1;
+            for (int i = 1; i <= self.count; i++)
+            {
+                [self.twitterFeed addObject:[statuses objectAtIndex:i]];
+            }
             [self insertRowAtBottom];
         } errorBlock:^(NSError *error) {
             
