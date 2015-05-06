@@ -25,7 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.replyTextField.delegate = self;
     
+  //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+   //                                initWithTarget:self
+   //                                action:@selector(dismissKeyboard)];
+   // [self.view addGestureRecognizer:tap];
     
 }
 
@@ -147,11 +152,8 @@
     }
 }
 
-- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
-{
-    
-    return NO;
-}
+
+
 
 
 @end

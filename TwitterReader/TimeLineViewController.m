@@ -109,6 +109,22 @@
     cell.date.text=time;
     [cell.icon setImage:[UIImage imageWithData:data]];
     
+    
+    NSDictionary *entities=feed[@"entities"];
+    NSArray *mediaList=entities[@"media"];
+    NSDictionary *media=[mediaList objectAtIndex:0];
+    NSString *contentImageURL= media[@"media_url"];
+    NSString *size=@"medium";
+    
+    NSData *contentData = [NSData dataWithContentsOfURL:[NSURL URLWithString:
+                                                         [NSString stringWithFormat:@"%@:%@",contentImageURL,size ]]];
+    [cell.picture setImage:[UIImage imageWithData:contentData]];
+    if(contentData==nil)
+    {
+        [cell.picture removeFromSuperview];
+        
+    }
+    
     // record id string in the cell,reuse it when cell clicked
     cell.tweetID=feed[@"id_str"];
     return cell;
@@ -119,6 +135,21 @@
     self.selectedID=selectedCell.tweetID;
     [self performSegueWithIdentifier: @"detailSegue" sender: self];
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary* feed=self.twitterFeed[indexPath.row];
+    NSDictionary *entities=feed[@"entities"];
+    NSArray *mediaList=entities[@"media"];
+    NSDictionary *media=[mediaList objectAtIndex:0];
+    NSString *contentImageURL= media[@"media_url"];
+    if(contentImageURL==nil)
+    {   return 100.0f;}
+    
+    else return 240.0f;
+    
+}
+
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"detailSegue"]) {
