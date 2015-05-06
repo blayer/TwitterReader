@@ -5,6 +5,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'TwitterReader' do
 pod 'SVPullToRefresh'
+pod 'SDWebImage', '~>3.7'
+pod "UIViewController-KeyboardAdditions"
 end
 
 target 'TwitterReaderTests' do

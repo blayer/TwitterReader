@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_TwitterReader_UIViewController_KeyboardAdditions : NSObject
+@end
+@implementation PodsDummy_Pods_TwitterReader_UIViewController_KeyboardAdditions
+@end

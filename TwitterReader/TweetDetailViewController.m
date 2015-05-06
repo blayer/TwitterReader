@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.replyTextField.delegate = self;
-    
+     [self buildView];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
@@ -37,19 +37,29 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated
-{   [self buildView];
+{
     [self.view setNeedsDisplay];
     
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+
 -(void) buildView
 {
     // Do any additional setup after loading the view.
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.frame = CGRectMake(10.0, 0.0, 40.0, 40.0);
+    activityIndicator.center = self.view.center;
+    [self.view addSubview: activityIndicator];
+    [activityIndicator startAnimating];
+    
+    
     STTwitterAPI *twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:ZCKConsumerKey
                                                             consumerSecret:ZCKConsumerSecret];
     
@@ -57,12 +67,21 @@
         
         
         [twitter getStatusesShowID:self.tweetID trimUser:nil includeMyRetweet:nil includeEntities:[NSNumber numberWithBool:YES] successBlock:^(NSDictionary *status) {
+            [activityIndicator stopAnimating];
             self.tweetInfo=status;
             self.user=self.tweetInfo[@"user"];
             [self showTweetDetail];
             
             
         } errorBlock:^(NSError *error) {
+            [activityIndicator stopAnimating];
+            [self.view setNeedsDisplay];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Loading Error."
+                                                                message:[error localizedDescription]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+            [alertView show];
             
             
             NSLog(@"%@",error.debugDescription);
@@ -71,6 +90,16 @@
         
         
     } errorBlock:^(NSError *error) {
+        
+        [activityIndicator stopAnimating];
+        [self.view setNeedsDisplay];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Loading Error."
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+
         NSLog(@"%@",error.debugDescription);
         
     }];
@@ -185,10 +214,19 @@
     }
 }
 
-//for dismiss keyboards
+// load prefix of textfied from all mentions and tweet's screen name
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    return YES;
+    NSArray *mentions=(self.tweetInfo[@"entities"])[@"user_mentions"];
+    NSMutableString *prefix=[NSMutableString stringWithFormat:@"@%@",self.user[@"screen_name"]];
     
+    for(NSDictionary *mention in mentions)
+    {
+        NSString *add=[NSString stringWithFormat:@"@%@",mention[@"screen_name"]];
+        [prefix appendString:add];
+    }
+  
+    textField.text=prefix;
+    return YES;
 }
 -(void)dismissKeyboard {
     [self.view endEditing:YES];

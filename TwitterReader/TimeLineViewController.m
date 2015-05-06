@@ -12,6 +12,7 @@
 #import "TwitterReaderParameters.h"
 #import "TweetDetailViewController.h"
 #import "SVPullToRefresh.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 @interface TimeLineViewController ()
@@ -63,6 +64,13 @@
         
     } errorBlock:^(NSError *error) {
         
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Loading Error."
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+        
         NSLog(@"%@",error.debugDescription);
         
         
@@ -93,6 +101,12 @@
         }];
     } errorBlock:^(NSError *error) {
         
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Loading Error."
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
         NSLog(@"%@",error.debugDescription);
         
         
@@ -177,14 +191,18 @@
     NSArray *mediaList=entities[@"media"];
     NSDictionary *media=[mediaList objectAtIndex:0];
     NSString *contentImageURL= media[@"media_url"];
-    NSString *size=@"medium";
-    
-    NSData *contentData = [NSData dataWithContentsOfURL:[NSURL URLWithString:
-                                                         [NSString stringWithFormat:@"%@:%@",contentImageURL,size ]]];
-    [cell.picture setImage:[UIImage imageWithData:contentData]];
-    if(contentData==nil)
+    NSString *size=@"small";
+    if(contentImageURL==nil)
     {
         [cell.picture removeFromSuperview];
+        
+    }
+    else {
+    
+  // downloading image asychronized, it would not block ui. 
+        [cell.picture sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@:%@",contentImageURL,size ]]
+                          placeholderImage:[UIImage imageNamed:contentImageURL]
+                          options:SDWebImageRefreshCached];
         
     }
     

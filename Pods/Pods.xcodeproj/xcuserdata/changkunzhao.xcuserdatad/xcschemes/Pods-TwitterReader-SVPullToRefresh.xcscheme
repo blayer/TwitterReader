@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "849D2C66600956E0F7C3A11D"
+               BlueprintIdentifier = "50F688E9D2E9C259E7ACA8F9"
                BuildableName = "libPods-TwitterReader-SVPullToRefresh.a"
                BlueprintName = "Pods-TwitterReader-SVPullToRefresh"
                ReferencedContainer = "container:Pods.xcodeproj">

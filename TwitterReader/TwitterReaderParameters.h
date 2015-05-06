@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #define ZCKConsumerKey                 @"6L3jbzOHUkbllPYXExjAY8tQ1"
 #define ZCKConsumerSecret              @"ms1ANHeUoiWRX024h3GgvCcuRRnsEkJdmrd3m0pJAD47V9QYU4"
-#define NumberOfTweetsPerPull          5
+#define NumberOfTweetsPerPull          20
 
 
 

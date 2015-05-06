@@ -12,7 +12,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *subtitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
-@property (weak, nonatomic) IBOutlet UIImageView *picture;
+@property (strong, nonatomic) IBOutlet UIImageView *picture;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UILabel *handleLabel;
 @property NSString *tweetID;
