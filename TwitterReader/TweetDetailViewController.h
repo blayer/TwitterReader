@@ -20,6 +20,7 @@
 @property NSString *tweetID;
 
 - (IBAction)nameButtonClicked:(id)sender;
+- (IBAction)replyButtonClicked:(id)sender;
 
 
 @end

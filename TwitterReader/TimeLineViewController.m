@@ -125,7 +125,7 @@
 -(NSString *) getTweetDate:(NSString* ) time
 {
     NSArray *array = [time componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSString *date=[NSString stringWithFormat:@"%@/%@/%@", array[1], array[2], array[5]];
+    NSString *date=[NSString stringWithFormat:@"%@-%@", array[1], array[2]];
     return date;
 }
 
@@ -165,12 +165,13 @@
     cell.titleLabel.text=user[@"name"];
     NSString *imageURL=user[@"profile_image_url"];
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
-    NSString *time=[self getTweetTime:feed[@"created_at"]];
-    NSString *handleName=[NSString stringWithFormat:@"@%@",user[@"screen_name"]];
-    cell.handleLabel.text=handleName;
-    cell.date.text=time;
+    NSString *fullDate=feed[@"created_at"];
+    cell.date.text=[NSString stringWithFormat:@"%@  %@",[self getTweetDate:fullDate],[self getTweetTime:fullDate] ];
+    
     [cell.icon setImage:[UIImage imageWithData:data]];
     
+    NSString *handleName=[NSString stringWithFormat:@"@%@",user[@"screen_name"]];
+    cell.handleLabel.text=handleName;
     
     NSDictionary *entities=feed[@"entities"];
     NSArray *mediaList=entities[@"media"];
@@ -210,7 +211,7 @@
     if(contentImageURL==nil)
     {   return 100.0f;}
     
-    else return 240.0f;
+    else return 270.0f;
     
 }
 

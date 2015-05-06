@@ -25,6 +25,18 @@
 		83741FA51AF938F600025178 /* TweetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83741FA41AF938F600025178 /* TweetDetailViewController.m */; };
 		83741FA91AF9643E00025178 /* STTweetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83741FA81AF9643E00025178 /* STTweetLabel.m */; };
 		83741FAC1AF96DF100025178 /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83741FAB1AF96DF100025178 /* WebPageViewController.m */; };
+		83741FAF1AF9C9DA00025178 /* ActivityHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 83741FAE1AF9C9DA00025178 /* ActivityHub.m */; };
+		83741FBC1AF9CA1C00025178 /* Checkmark Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FB11AF9CA1C00025178 /* Checkmark Filled-50.png */; };
+		83741FBD1AF9CA1C00025178 /* Checkmark-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FB21AF9CA1C00025178 /* Checkmark-64.png */; };
+		83741FBE1AF9CA1C00025178 /* Eraser-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FB31AF9CA1C00025178 /* Eraser-50.png */; };
+		83741FBF1AF9CA1C00025178 /* Eraser-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FB41AF9CA1C00025178 /* Eraser-64.png */; };
+		83741FC01AF9CA1C00025178 /* Home Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FB51AF9CA1C00025178 /* Home Filled-50.png */; };
+		83741FC11AF9CA1C00025178 /* Info-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FB61AF9CA1C00025178 /* Info-50.png */; };
+		83741FC21AF9CA1C00025178 /* Marker Pen-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FB71AF9CA1C00025178 /* Marker Pen-white.png */; };
+		83741FC31AF9CA1C00025178 /* Paint Palette-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FB81AF9CA1C00025178 /* Paint Palette-50.png */; };
+		83741FC41AF9CA1C00025178 /* Reload Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FB91AF9CA1C00025178 /* Reload Filled-50.png */; };
+		83741FC51AF9CA1C00025178 /* Save As Filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FBA1AF9CA1C00025178 /* Save As Filled-50.png */; };
+		83741FC61AF9CA1C00025178 /* SliderKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 83741FBB1AF9CA1C00025178 /* SliderKnob.png */; };
 		83964F2E1AF830C600B792D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83964F2D1AF830C600B792D2 /* main.m */; };
 		83964F311AF830C600B792D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83964F301AF830C600B792D2 /* AppDelegate.m */; };
 		83964F371AF830C600B792D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83964F351AF830C600B792D2 /* Main.storyboard */; };
@@ -94,6 +106,19 @@
 		83741FA81AF9643E00025178 /* STTweetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTweetLabel.m; sourceTree = "<group>"; };
 		83741FAA1AF96DF100025178 /* WebPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPageViewController.h; sourceTree = "<group>"; };
 		83741FAB1AF96DF100025178 /* WebPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPageViewController.m; sourceTree = "<group>"; };
+		83741FAD1AF9C9DA00025178 /* ActivityHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityHub.h; sourceTree = "<group>"; };
+		83741FAE1AF9C9DA00025178 /* ActivityHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityHub.m; sourceTree = "<group>"; };
+		83741FB11AF9CA1C00025178 /* Checkmark Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark Filled-50.png"; sourceTree = "<group>"; };
+		83741FB21AF9CA1C00025178 /* Checkmark-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark-64.png"; sourceTree = "<group>"; };
+		83741FB31AF9CA1C00025178 /* Eraser-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Eraser-50.png"; sourceTree = "<group>"; };
+		83741FB41AF9CA1C00025178 /* Eraser-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Eraser-64.png"; sourceTree = "<group>"; };
+		83741FB51AF9CA1C00025178 /* Home Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home Filled-50.png"; sourceTree = "<group>"; };
+		83741FB61AF9CA1C00025178 /* Info-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Info-50.png"; sourceTree = "<group>"; };
+		83741FB71AF9CA1C00025178 /* Marker Pen-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Marker Pen-white.png"; sourceTree = "<group>"; };
+		83741FB81AF9CA1C00025178 /* Paint Palette-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Paint Palette-50.png"; sourceTree = "<group>"; };
+		83741FB91AF9CA1C00025178 /* Reload Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reload Filled-50.png"; sourceTree = "<group>"; };
+		83741FBA1AF9CA1C00025178 /* Save As Filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Save As Filled-50.png"; sourceTree = "<group>"; };
+		83741FBB1AF9CA1C00025178 /* SliderKnob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderKnob.png; sourceTree = "<group>"; };
 		83964F281AF830C600B792D2 /* TwitterReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83964F2C1AF830C600B792D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83964F2D1AF830C600B792D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -206,6 +231,24 @@
 			path = STTweetLabel;
 			sourceTree = "<group>";
 		};
+		83741FB01AF9CA1C00025178 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				83741FB11AF9CA1C00025178 /* Checkmark Filled-50.png */,
+				83741FB21AF9CA1C00025178 /* Checkmark-64.png */,
+				83741FB31AF9CA1C00025178 /* Eraser-50.png */,
+				83741FB41AF9CA1C00025178 /* Eraser-64.png */,
+				83741FB51AF9CA1C00025178 /* Home Filled-50.png */,
+				83741FB61AF9CA1C00025178 /* Info-50.png */,
+				83741FB71AF9CA1C00025178 /* Marker Pen-white.png */,
+				83741FB81AF9CA1C00025178 /* Paint Palette-50.png */,
+				83741FB91AF9CA1C00025178 /* Reload Filled-50.png */,
+				83741FBA1AF9CA1C00025178 /* Save As Filled-50.png */,
+				83741FBB1AF9CA1C00025178 /* SliderKnob.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
 		83964F1F1AF830C500B792D2 = {
 			isa = PBXGroup;
 			children = (
@@ -238,7 +281,10 @@
 			children = (
 				83741FA61AF9643E00025178 /* STTweetLabel */,
 				83741F711AF937BE00025178 /* STTwitter */,
+				83741FB01AF9CA1C00025178 /* icons */,
 				83741F5A1AF8498B00025178 /* TwitterReaderParameters.h */,
+				83741FAD1AF9C9DA00025178 /* ActivityHub.h */,
+				83741FAE1AF9C9DA00025178 /* ActivityHub.m */,
 				83741F5B1AF879DD00025178 /* TweetCell.h */,
 				83741F5C1AF879DD00025178 /* TweetCell.m */,
 				83964F2F1AF830C600B792D2 /* AppDelegate.h */,
@@ -373,9 +419,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83741FC41AF9CA1C00025178 /* Reload Filled-50.png in Resources */,
+				83741FC11AF9CA1C00025178 /* Info-50.png in Resources */,
+				83741FC01AF9CA1C00025178 /* Home Filled-50.png in Resources */,
 				83964F371AF830C600B792D2 /* Main.storyboard in Resources */,
+				83741FBC1AF9CA1C00025178 /* Checkmark Filled-50.png in Resources */,
+				83741FC51AF9CA1C00025178 /* Save As Filled-50.png in Resources */,
+				83741FC61AF9CA1C00025178 /* SliderKnob.png in Resources */,
+				83741FC21AF9CA1C00025178 /* Marker Pen-white.png in Resources */,
 				83964F3C1AF830C600B792D2 /* LaunchScreen.xib in Resources */,
 				83964F391AF830C600B792D2 /* Images.xcassets in Resources */,
+				83741FC31AF9CA1C00025178 /* Paint Palette-50.png in Resources */,
+				83741FBE1AF9CA1C00025178 /* Eraser-50.png in Resources */,
+				83741FBF1AF9CA1C00025178 /* Eraser-64.png in Resources */,
+				83741FBD1AF9CA1C00025178 /* Checkmark-64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +501,7 @@
 				83741F941AF937BE00025178 /* NSString+STTwitter.m in Sources */,
 				83741F951AF937BE00025178 /* STHTTPRequest+STTwitter.m in Sources */,
 				83964F2E1AF830C600B792D2 /* main.m in Sources */,
+				83741FAF1AF9C9DA00025178 /* ActivityHub.m in Sources */,
 				83741F981AF937BE00025178 /* STTwitterHTML.m in Sources */,
 				83741F991AF937BE00025178 /* STTwitterOAuth.m in Sources */,
 				83741F5D1AF879DD00025178 /* TweetCell.m in Sources */,

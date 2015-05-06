@@ -12,6 +12,7 @@
 #import "TimeLineViewController.h"
 #import "STTweetLabel.h"
 #import "WebPageViewController.h"
+#import "ActivityHub.h"
 
 @interface TweetDetailViewController ()
 @property (nonatomic, weak) IBOutlet STTweetLabel *tweetLabel;
@@ -78,17 +79,18 @@
     
 }
 -(void) showTweetDetail
-{
+{   //show num of tweets
     NSString *retweet = [NSString stringWithFormat:@"%@ %@", self.tweetInfo[@"retweet_count"],@"retweets"];
     self.retweetLabel.text=retweet;
     
+    //show num of favorites
     NSString *favorite =[NSString stringWithFormat:@"%@ %@", self.user[@"favourites_count"],@"favorites"];
     self.favoriteLabel.text=favorite;
-    
+    // show profile image
     NSString *imageURL=self.user[@"profile_image_url"];
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
     [self.iconImageView setImage:[UIImage imageWithData:data]];
-    
+    // show image
     NSDictionary *entities=self.tweetInfo[@"entities"];
     NSArray *mediaList=entities[@"media"];
     NSDictionary *media=[mediaList objectAtIndex:0];
@@ -106,7 +108,7 @@
        
          }
  
-    
+    //should tweet content
     self.tweetLabel.text=self.tweetInfo[@"text"];
     self.tweetLabel.detectionBlock = ^(STTweetHotWord hotWord, NSString *string, NSString *protocol, NSRange range) {
         
@@ -126,8 +128,11 @@
         
     };
     
-  //  [self.contentTextView setDataDetectorTypes:UIDataDetectorTypeAll];
+    //show date
+    NSString *date=self.user[@"created_at"];
+    self.dateLabel.text=[NSString stringWithFormat:@"%@  %@", [self getTweetDate:date],[self getTweetTime:date]];
     
+    //show screen name
     [self.nameButton setTitle:self.user[@"screen_name"] forState:UIControlStateNormal];
     
     
@@ -137,6 +142,23 @@
 - (IBAction)nameButtonClicked:(id)sender {
     self.targetScreenName=self.user[@"screen_name"];
     [self performSegueWithIdentifier: @"timelineSegue" sender: self];
+}
+
+- (IBAction)replyButtonClicked:(id)sender {
+    
+    ActivityHub *hub=[[ActivityHub alloc ]initWithFrame:CGRectMake(0, 0,170, 170)];
+    hub.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+    [hub setLabelText:@"Reply Sent."];
+    [hub setImage:[UIImage imageNamed:@"Checkmark-64.png"]];
+    [self.view addSubview:hub];
+    
+    //delay 1.5 seconds for display activity hub
+    double delayInSeconds = 1.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [hub removeFromSuperview];
+    });
+    
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -162,6 +184,22 @@
     [self.view endEditing:YES];
 }
 
+-(NSString *) getTweetDate:(NSString* ) time
+{
+    NSArray *array = [time componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *date=[NSString stringWithFormat:@"%@-%@", array[1], array[2]];
+    return date;
+}
+
+//return time in format hh/mm
+-(NSString *) getTweetTime:(NSString* ) time
+{
+    NSArray *dateArray = [time componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *threeDigiTime=[NSString stringWithFormat:@"%@", dateArray[3]];
+    NSArray *timeArray= [threeDigiTime componentsSeparatedByString:@":"];
+    NSString *twoDigitTime=[NSString stringWithFormat:@"%@:%@", timeArray[0],timeArray[1]];
+    return twoDigitTime;
+}
 
 
 @end
