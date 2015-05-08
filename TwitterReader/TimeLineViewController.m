@@ -29,18 +29,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if(self.scrrenName==nil)
-    { self.scrrenName=@"NBAcom";}
+    { self.scrrenName=InitScreenName;}
     
     __weak TimeLineViewController *weakSelf = self;
     //setting pull to refresh action listener
     [self.timeLineTableView addInfiniteScrollingWithActionHandler:^{
             [weakSelf loadMoreTweets];
     }];
+    
+    [self firstLoadTweets];
        // Do any additional setup after loading the view.
 }
 
 -(void) viewWillAppear:(BOOL)animated
-{ [self firstLoadTweets];
+{
+    [self.timeLineTableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
