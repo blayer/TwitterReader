@@ -4,7 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-TwitterReader-AFNetworking.xcscheme</key>
+		<key>Pods-TwitterReader-SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-TwitterReader-SVPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-TwitterReader-UIViewController-KeyboardAdditions.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>48EB879DBBB42CF15A842FB7</key>
+		<key>141F65E9DECC89BEE5F84A56</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF9518F4239F2D39A21680FC</key>
+		<key>49E9895C2E09C7EFB87A6BA0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50F688E9D2E9C259E7ACA8F9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ECCAF835966C9014B55FE28F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

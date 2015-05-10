@@ -1,0 +1,5 @@
+#include "Pods-TwitterReader-UIViewController-KeyboardAdditions.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/UIViewController-KeyboardAdditions" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/SVPullToRefresh" "${PODS_ROOT}/Headers/Public/UIViewController-KeyboardAdditions"
+OTHER_LDFLAGS = ${PODS_TWITTERREADER_UIVIEWCONTROLLER_KEYBOARDADDITIONS_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}
